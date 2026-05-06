@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./JokeGame.css";
 
 function JokeGame() {
@@ -8,6 +9,7 @@ function JokeGame() {
   const [score, setScore] = useState(0);
   const [rounds, setRounds] = useState(0);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const fetchJoke = async () => {
     try {
@@ -43,16 +45,24 @@ function JokeGame() {
     setRounds(rounds + 1);
     setMessage("Good try! Maybe next joke.");
   };
+  const handleLogout = () => {
+    localStorage.setItem("isLoggedIn", "false");
+    navigate("/login");
+  };
 
   return (
     <div className="game-container">
       <div className="game-card">
-        <h1>Joke Guess Game</h1>
-
+        <h1>😂 Joke Guess Game</h1>
+  
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+  
         <p className="description">
           Try to guess the punchline before you reveal the answer.
         </p>
-
+        
         <div className="score-box">
           <p>Score: {score}</p>
           <p>Rounds: {rounds}</p>

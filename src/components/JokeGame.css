@@ -115,4 +115,12 @@
     margin-top: 15px;
     font-weight: bold;
     color: #374151;
+  }.logout-button {
+    background-color: #111827;
+    color: white;
+    margin-bottom: 15px;
+  }
+  
+  .logout-button:hover {
+    opacity: 0.85;
   }
